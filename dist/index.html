@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            font-face: "verdana", "sans-serif";
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #E6E8E1;
+        }
+
+        .container {
+            height: 20px;
+            width: 400px;
+            margin: 2px auto;
+            margin-top: 2px;
+            border-radius: 15px;
+            box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+            background: rgb(155, 198, 53);
+            /* Old browsers */
+            background: -moz-linear-gradient(45deg, rgba(155, 198, 53, 1) 0%, rgba(192, 234, 103, 1) 99%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(45deg, rgba(155, 198, 53, 1) 0%, rgba(192, 234, 103, 1) 99%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(45deg, rgba(155, 198, 53, 1) 0%, rgba(192, 234, 103, 1) 99%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bc635', endColorstr='#c0ea67', GradientType=1);
+            /* IE6-9 fallback on horizontal gradient */
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    const sentences = [
+        "Hi man, what are you doing?",
+        "Hi, is it done?",
+        "Can I set as completed this issue?",
+        "Are you finished this issue?",
+        "Can't understand why you need so many time",
+        "Hi man",
+        "Ping",
+        "Are you there?",
+        "Do you have 1 sec please",
+        "Morning, did you completed this issue?",
+        "Can I test this issue?",
+        "And now?",
+        "How is going?",
+    ]
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    function add() {
+        shuffleArray(sentences);
+        const selected = Math.floor(Math.random() * sentences.length);
+        let div = document.createElement("div");
+        div.textContent = sentences[selected];
+        div.className = 'container';
+        document.body.prepend(div)
+        const currents = document.getElementsByClassName("container");
+        if (currents.length > 10) {
+            document.body.removeChild(currents[currents.length - 1]);
+        }
+    }
+    setInterval(add, 1000 * 3)
+</script>
+
+</html>
